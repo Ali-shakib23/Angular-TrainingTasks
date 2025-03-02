@@ -1,0 +1,61 @@
+
+<div class="container mt-3">
+    <h1>enter username here</h1>
+    <div class="row">
+        <div class="col-md-10"> 
+            <input type="text" class="form-control" [(ngModel)]="username"/>
+        <br>    
+        </div>
+       
+        <div class="col-md-12">
+            @if (username =="") {
+                <button class="btn btn-primary" (click)="resetUsername()" [disabled]="!buttonReset"> reset </button>
+            }
+            @else {
+                <button class="btn btn-primary" (click)="resetUsername()" [disabled]="buttonReset"> reset </button>
+            }
+        <br>
+        </div>
+
+        <br>
+        {{username}}
+    </div>
+
+    <br>
+    <div class="col-md-12">
+        <button (click) = "displayLog()" class="btn btn-primary">Display details </button>
+        <br>
+        <p>secret password  = tuna</p>
+        <!-- {{counter}} -->
+
+
+        <!-- <div class="d-flex gap-3">
+            @for (log of logList; track log){
+                <div class="p-2 border rounded">
+                    <h1>{{log}}</h1>
+                </div>
+            
+            }
+        </div> -->
+
+    </div>
+</div>
+
+<div class="container">
+    @for (log of logList; track log ; let index = $index) {
+      <div class="card mb-2" [ngStyle]="index+1 >= 5 ? cardStyle : {}" [ngClass]="index+1 >= 5 ? cardClass : ''" >
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-2">
+              <h3>{{ log.count }}</h3>
+            </div>
+            <div class="col-md-2">
+                <h3>{{ log.time }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+  
+  
